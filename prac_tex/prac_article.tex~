@@ -1,0 +1,89 @@
+\documentclass[a4paper,twocolumn,12pt]{article}
+
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian, english]{babel}
+
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtext}
+
+\newcommand{\scalar}[2]
+{
+  \langle #1,#2 \rangle
+}
+
+\newcounter{stage_counter}
+\setcounter{stage_counter}{1}
+
+\newenvironment{stage}[1]
+{
+\begin{center}  
+  
+  \texttt{\Roman{stage_counter}. #1}      
+  
+  \addtocounter{stage_counter}{1}
+\end{center}  
+}{}
+
+\begin{document}
+
+  \begin{stage}{Постановка задачи}
+    \[ J(x) = \scalar{a}{x}^4 + 2\|x-b\|^2 \rightarrow \inf, \ x \in \mathbb{R}^5 ,\]
+    \[a = (\frac{1}{2}, \frac{1}{4},-\frac{1}{4}, \frac{1}{4}, \frac{3}{4}), b =(2, 4, 3, 3, 0)\]
+  \end{stage}
+  
+  \begin{stage}{Аналитическое решение}
+    \[ \scalar{a}{b} = 2, \|a\|^2=1, \|b\|^2=38 \]
+    \[ J(x) \ge 0 \Rightarrow \inf \ge 0 > - \infty \] 
+    \[ J^{\prime}(x) = 3\scalar{a}{x}^{3}a + 4(x-b) \]
+    \[ J^{\prime\prime}(x)h = 12\scalar{a}{x}^{2}\scalar{a}{h}a + 4h 
+    \Rightarrow \] 
+    \[ \Rightarrow \scalar{J(x)^{\prime\prime}h}{h} \ge 4\|h\|^2 \] 
+    \par Значит \(J(x)\) - сильно выпуклая. \\
+    \par Так как задача без ограничений, то вариационное неравенство переходит
+    в равенство \(\Rightarrow J^\prime(x)=\theta \). 
+    Найдем отсюда \(x = \alpha a +\beta b + \gamma c,\) где \( c \perp a,b\):
+    \[ 4\scalar{a}{\alpha a +\beta b + \gamma} + 4(\alpha a +(\beta-1) b + \gamma) = \theta \Rightarrow\]
+    \[ \Rightarrow ((\alpha+2\beta)^3+\alpha)a +(\beta-1)b +\gamma c = \theta \]
+    \par Домножив скалярно данное неравенство на \(c\) получим, что \(\gamma = 0\). 
+    Запишем систему, где первое получается домножением на \(a\), а второе на \(b\)
+    (на множители сократим):
+    \[
+      \begin{cases}
+        (\alpha+2\beta)^3+\alpha + 2(\beta-1) = 0\\
+        (\alpha+2\beta)^3+\alpha + 19(\beta-1) = 0
+      \end{cases}
+    \]
+    \par Запишем новую систему, где первое равенство это сумма двух вышеприведенных, а 
+    второе - разность (с подставленным \(\beta\)):
+    \[
+      \begin{cases}
+        \beta = 1\\
+        (\alpha+2)^3+\alpha = 0
+      \end{cases}
+    \Rightarrow 
+      \begin{cases}
+        \beta = 1\\
+        \alpha = -1
+      \end{cases}
+    \]
+    \par По критерию оптимальности \(-a+b\) является точкой глобального минимума. 
+    Так как \(J(x)\) -- сильно выпуклая, то точка минимума единственная. 
+    \begin{center}
+      Ответ: 
+      \(J_*=3,\ x_*=-a+b\)
+    \end{center}  
+  
+  \end{stage}
+
+  
+\end{document}
+
+
+
+
+
+
+
